@@ -52,6 +52,12 @@ module.exports = {
 
         await Dev.findOneAndUpdate(_id,{$set: updateDev});
         return response.json({message: "ok"});
+    },
+    async destroy(request, response){
+        const _id = request.params;
+
+        await Dev.findOneAndDelete(_id);
+        return response.json({message: "ok"});
     }
 };
 
