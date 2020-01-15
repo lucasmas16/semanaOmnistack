@@ -1,0 +1,4 @@
+*.log
+*.zip
+*.iml
+*/node_modules
