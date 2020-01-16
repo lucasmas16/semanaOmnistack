@@ -12,10 +12,13 @@ module.exports = {
     },
     async store(request, response) {
         const {github_username, techs, latitude, longitude} = request.body;
-    
+        
         let dev = await Dev.findOne({github_username});
+        console.log('Passei1');
         if(!dev){
+            console.log(`https://api.github.com/users/${github_username}`);
             const apiResponse = await axios.get(`https://api.github.com/users/${github_username}`);
+            console.log('RESPOSTA: '+apiResponse);
             const {name = login, avatar_url, bio = login} = apiResponse.data;
         
             const techsArray = parseStringAsArray(techs);
